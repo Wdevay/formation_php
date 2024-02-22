@@ -1,4 +1,6 @@
 <?php
+        // On démarre la session
+        session_start();
         // On charge la config
         require "config.php";
         // On charge le router

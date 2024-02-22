@@ -1,18 +1,23 @@
 <h1 class="text-center"><?= CONFIG_SITE_TITLE ?></h1>
 
+<?php if (isset($_SESSION['user']['roles']) && in_array('ROLE_ADMIN', json_decode($_SESSION['user']['roles']))): ?>
+    <div class="alert alert-info" role="alert">
+        <p>Vous etes connecté en tant que <strong>ADMIN</strong></p>
+    </div>
+<?php endif; ?>
 <!-- CAROUSEL DYNAMIQUE -->
-<section class="carousel">
+<section class="carousel" >
     <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-         <div class="carousel-inner">
+         <div class="carousel-inner" >
         <!-- DEBUT DE LA BOUCLE FOREACH -->
         <?php foreach ($posts as $key => $article) : ?>
 
-            <div class="carousel-item <?php if ($key===array_key_first($posts)) echo "active" ?>">
+            <div class="carousel-item <?php if ($key===array_key_first($posts)) echo "active" ?>" >
                 <img src="<?= $article['image'] ?>" class="d-block w-100" alt="<?= $article['title'] ?>">
                 <div class="carousel-caption d-none d-md-block">
                     <h5><?= $article['title'] ?></h5>

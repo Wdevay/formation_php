@@ -43,8 +43,12 @@
                         <input name="page" value="search" type="hidden">
                         <input name="keywords" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
-                        <a class="btn btn-success ms-2" type="submit" href="?page=login">Login</a>
                     </form>
+                    <?php if (!isset($_SESSION['user'])): ?>
+                    <a class="btn btn-success ms-2" href="?page=login">Login</a>
+                    <?php else: ?>
+                    <a class="btn btn-danger ms-2" href="?page=logout">Logout</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>

@@ -2,7 +2,7 @@
 // echo "<pre>";
 // var_dump($_POST);
 // echo "</pre>";
-    $auth = false;
+
 
 if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email']) && !empty($_POST['password'])) {
 
@@ -30,7 +30,9 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
     }
 
     if (empty($errors)) {
-        $auth = true;
+        // Connexion reussie on supprime le mot de passe
+        unset($account["password"]);
+        $_SESSION['user'] = $account;
         
     }
 }

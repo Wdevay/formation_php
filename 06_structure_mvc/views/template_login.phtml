@@ -6,7 +6,7 @@
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-    <?php if(isset($auth) && !($auth)):?>
+    <?php if (!isset ($_SESSION['user'])): ?>
 <form action="?page=login" method="POST">
   <div class="row mb-3">
     <label for="email" class="col-sm-2 col-form-label">Email</label>
@@ -32,19 +32,19 @@
   </div>
   <button type="submit" class="btn btn-dark mb-3">Connexion</button>
   
-  <?php elseif(isset($auth) && ($auth)):?>
-    <div class="alert alert-success" role="alert">
-            <p>Connexion reussie, Vous allez être rediriger vers la page d'accueil dans <span id="timeout"></span> secondes</p>
-    </div>
+  <?php else :?>
     <script>
-        let timeout= 5;
+        let timeout= 3;
         setInterval(function() {
             document.getElementById('timeout').innerText = timeout;
             timeout--;
         },1000)
         window.setTimeout(function() {
             window.location.href = "?page=home";
-        },6000)
+        },4000)
     </script>
+    <div class="alert alert-success" role="alert">
+            <p>Connexion reussie, Vous allez être rediriger vers la page d'accueil dans <span id="timeout"></span> secondes</p>
+    </div>
 <?php endif; ?>
 </form>
