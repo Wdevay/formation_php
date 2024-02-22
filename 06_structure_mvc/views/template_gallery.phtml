@@ -1,0 +1,18 @@
+<h1 class="text-center">Gallery</h1>
+
+<h3 class="mb-5">Mes articles de blog</h3>
+
+<section class="row row-cols-1 row-cols-md-3 g-4"">
+    <?php foreach ($posts as $article) : ?> 
+    <article>
+        <div class=" card mb-3 ">
+            <img src="<?= $article['image'] ?>" class="card-img-top" alt="<?= $article['title'] ?>">
+            <div class="card-body bg-dark">
+                <h5 class="card-title text-white"><?= $article['title'] ?></h5>
+                <p class="card-text text-white"><?= $article['description'] ?></p>
+                <p class="card-text text-white"><small class="text-body-secondary">Rédigé le <?= $article['created_at'] ?></small></p>
+            </div>
+        </div>
+    </article>
+    <?php endforeach; ?>
+</section>
