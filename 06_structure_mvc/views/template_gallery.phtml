@@ -6,11 +6,12 @@
     <?php foreach ($posts as $article) : ?> 
     <article>
         <div class=" card mb-3 ">
-            <img src="<?= $article['image'] ?>" class="card-img-top" alt="<?= $article['title'] ?>">
+        <a href="?page=post_detail&id=<?= $article['id'] ?>"><img src="<?= $article['image'] ?>" class="card-img-top" alt="<?= $article['title'] ?>"></a>
             <div class="card-body bg-dark">
                 <h5 class="card-title text-white"><?= $article['title'] ?></h5>
-                <p class="card-text text-white"><?= $article['description'] ?></p>
-                <p class="card-text "><small class="text-body-secondary text-white">Rédigé le <?= $article['created_at'] ?></small></p>
+                <p class="card-text text-white"><?= substr($article['description'], 0, 100) ?></p>
+                <p class="card-text text-white"><small>Rédigé le <?= $article['created_at'] ?> par </small><strong><?= $article['name'] ?> <?= $article['firstname'] ?></strong></p>
+                <a href="?page=gallery&id=<?= $article['id'] ?>" class="btn btn-secondary">Lire la suite</a>
             </div>
         </div>
     </article>

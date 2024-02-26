@@ -10,14 +10,12 @@ if (!in_array('ROLE_ADMIN', json_decode($_SESSION['user']['roles']))) {
 
 $db = connectDB();
 $posts = [];
-
 if ($db){
-    $sql= $db->prepare("SELECT * FROM post ORDER BY id DESC");
+    $sql= $db->prepare("SELECT * FROM contact");
     $sql->execute();
     // echo "<pre>";
-    $posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+    $contacts = $sql->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($posts);
 }
-
 
 include "./views/base.phtml";

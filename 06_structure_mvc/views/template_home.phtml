@@ -2,7 +2,8 @@
 
 <?php if (isset($_SESSION['user']['roles']) && in_array('ROLE_ADMIN', json_decode($_SESSION['user']['roles']))): ?>
     <div class="alert alert-info" role="alert">
-        <p>Vous etes connecté en tant que <strong>ADMIN</strong></p>
+        <p> Bonjour <strong><?= $_SESSION['user']['name'] ?> <?= $_SESSION['user']['firstname'] ?></strong>
+        <p>Vous etes connecté en tant que <strong><a href="?page=admin">ADMIN</a></strong></p>
     </div>
 <?php endif; ?>
 <!-- CAROUSEL DYNAMIQUE -->

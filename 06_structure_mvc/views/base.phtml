@@ -44,10 +44,26 @@
                         <input name="keywords" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                    <?php if (!isset($_SESSION['user'])): ?>
-                    <a class="btn btn-success ms-2" href="?page=login">Login</a>
-                    <?php else: ?>
-                    <a class="btn btn-danger ms-2" href="?page=logout">Logout</a>
+
+                    <?php if (!isset($_SESSION['user'])) : ?>
+                        <a class="btn btn-success ms-2" href="?page=login">Login</a>
+                    <?php else : ?>
+                        <div class="dropdown text-end ms-2">
+                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle show" data-bs-toggle="dropdown" aria-expanded="true">
+                                <img src="./assets/images/guest-user.webp" alt="default profile image" width="32" height="32" class="rounded-circle" />
+                            </a>
+                            <ul class="dropdown-menu text-small" data-popper-placement="bottom-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px;transform: translate(0px, 34px);">
+                                <li><a class="dropdown-item" type="button" href="#">Profil</a></li>
+                                <li><a class="dropdown-item" type="button" href="#">Settings</a></li>
+                                <?php if (in_array('ROLE_ADMIN', json_decode($_SESSION['user']['roles']))) : ?>
+                                <li><a class="dropdown-item" type="button" href="?page=admin">Admin</a></li>
+                                <?php endif; ?>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" href="?page=logout">Sign out</a></li>
+                            </ul>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>

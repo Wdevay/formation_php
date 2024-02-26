@@ -1,0 +1,41 @@
+<?php if (!isset($id_to_update)) : ?>
+    <form class="row g-3" action="?page=admin_post_uc" method="POST">
+        <div class="col-md-6">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+        </div>
+        <div class="col-md-12">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter description"></textarea>
+        </div>
+        <div class="col-12">
+            <label for="inputURL" class="form-label">Url image</label>
+            <textarea type="text" class="form-control" id="inputURL" name="url" placeholder="Enter url"></textarea>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary mb-3">Add</button>
+
+        </div>
+    </form>
+<?php else : ?>
+    <form class="row g-3" action="?page=admin_post_uc&id=<?= $id_to_update ?>" method="POST">
+        <div class="col-md-6">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="<?= $post['title'] ?>">
+        </div>
+        <div class="col-md-12">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="text" class="form-control" id="description" name="description"> <?= $post['description'] ?></textarea>
+        </div>
+        <div class="col-12">
+            <label for="inputURL" class="form-label">Url image</label>
+            <textarea type="text" class="form-control" id="inputURL" name="url"> <?= $post['image'] ?></textarea>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary mb-3">Update</button>
+        </div>
+    </form>
+
+
+<?php endif; ?>
