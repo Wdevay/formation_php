@@ -9,8 +9,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
     $errors = [];
 
     $db = connectDB();
-    $email = htmlentities(strip_tags($_POST['email']));
-    $password = htmlentities(strip_tags($_POST['password']));
+    $email = cleanInput($_POST['email']);
+    $password = cleanInput($_POST['password']);
 
     if ($db) {
 
@@ -36,7 +36,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
         unset($account["password"]);
         $_SESSION['user'] = $account;   
     }
-    if (in_array('ROLE_ADMIN', json_decode($_SESSION['user']['roles']))) {
+    if (isRole('ROLE_ADMIN')) {
         header("Location: ?page=admin");
         exit();
     }

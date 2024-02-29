@@ -1,0 +1,63 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="<?= $user['avatar'] ?>"><span class="font-weight-bold"><?= $user['name'] ?> <?= $user['firstname'] ?></span><span class="text-black-50"><?= $user['email'] ?></span><span> </span></div>
+        </div>
+        <?php if (isset($errors) && ($errors)) : ?>
+        <?php foreach ($errors as $error) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $error ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+        <form class="col-md-5 border-right" action="?page=profil_edit" method="POST" enctype="multipart/form-data">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Prenom</label><input type="text" class="form-control" placeholder="prenom" value="<?= $user['name'] ?>" name="name"></div>
+                    <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" value="<?= $user['firstname'] ?>" placeholder="nom" name="firstname"></div>
+                </div>
+                <div class="row mt-3">
+                    <div <label for="message">Bio</label>
+                        <textarea class="form-control" placeholder="Leave a comment here" id="message" name="message" style="height: 150px"><?= $user['message'] ?></textarea>
+                        <!-- <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div> -->
+                        <div class="col-md-12"><label class="labels">Addresse 1</label><input type="text" class="form-control" placeholder="enter address line 1" value="<?= $user['adress'] ?>" name="adress"></div>
+                        <div class="col-md-12"><label class="labels">Addresse 2</label><input type="text" class="form-control"  value="<?= $user['adress2'] ?>" name="adress2"></div>
+                        <div class="col-md-12"><label class="labels">Code Postal</label><input type="text" class="form-control" placeholder="enter address line 2" value="<?= $user['code_postal'] ?>" name="code_postal"></div>
+                        <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" placeholder="enter address line 2" value="<?= $user['city'] ?>" name="city"></div>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Région</label>
+                            <select id="inputState" class="form-select" name="state">
+                                <option selected><?= $user['state'] ?></option>
+                                <?php foreach ($state as $value) : ?>
+                                    <option><?= $value ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-2"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email id" value="<?= $user['email'] ?>" name="email"></div>
+                        <!-- <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div> -->
+                        <div>
+                            <label class="labels" for="avatar">Image de profil</label><br>
+                            <input class="mb-3 form-control" type="file" multiple name="avatar" id="avatar" accept=".jpg,.jpeg,.gif,.png">
+                        </div>
+                    </div>
+                    <!-- <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                </div> -->
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+            </div>
+        </div> -->
+        </form>
+    </div>
+</div>
+</div>

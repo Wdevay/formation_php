@@ -3,7 +3,7 @@ if (!isset($_SESSION['user'])) {
     header("Location: ?page=login");
     exit();
 }
-if (!in_array('ROLE_ADMIN', json_decode($_SESSION['user']['roles']))) {
+if (!isRole('ROLE_ADMIN')) {
     header("Location: ?page=home");
     exit();
 }
@@ -28,9 +28,9 @@ if (isset($_GET['id'])) {
         
         if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['url']) && !empty($_POST['title']) && !empty($_POST['description'] && !empty($_POST['url']))) {
             
-            $title = htmlentities(strip_tags($_POST['title']));
-            $description = htmlentities(strip_tags($_POST['description']));
-            $url = htmlentities(strip_tags($_POST['url']));
+            $title = cleanInput($_POST['title']);
+            $description = cleanInput($_POST['description']);
+            $url = cleanInput($_POST['url']);
 
             $sql = $db->prepare("UPDATE post SET title = :title, description = :description, image = :url WHERE id = :id");
             $sql->bindParam(':title', $title);
@@ -48,9 +48,9 @@ if (isset($_GET['id'])) {
 } elseif (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['url']) && !empty($_POST['title']) && !empty($_POST['description'] && !empty($_POST['url']))) {
 
 
-    $title = htmlentities(strip_tags($_POST['title']));
-    $description = htmlentities(strip_tags($_POST['description']));
-    $url = htmlentities(strip_tags($_POST['url']));
+    $title = cleanInput($_POST['title']);
+    $description = cleanInput($_POST['description']);
+    $url = cleanInput($_POST['url']);
 
     if ($db) {
         $sql = $db->prepare("INSERT INTO post (user_id, title, description, image) VALUES (:user_id, :title, :description, :url)");

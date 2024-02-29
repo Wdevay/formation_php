@@ -1,7 +1,7 @@
 <h1 class="text-center">Admin Dashboard</h1>
 <p>Il est temps d'administrer</p>
-<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin') echo "active"; ?>" aria-current="page" href="?page=admin">Post</a>
-<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin_user') echo "active"; ?>" aria-current="page" href="?page=admin_user">User</a>
+<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin') echo "active"; ?>" aria-current="page" href="?page=admin">Posts</a>
+<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin_user') echo "active"; ?>" aria-current="page" href="?page=admin_user">Contacts</a>
 
 <h2>Handle post</h2>
 <table class="table table-striped">
@@ -36,7 +36,7 @@
   function confirmDelete(id) {
     const question = window.confirm("Are you sure you want to delete this post ?");
     if (question) {
-      window.location.href = `?page=admin_post_delete&id=${id}`
+      window.location.href = `?page=admin_post_delete&post_id=${id}`
     }
   }
 </script>

@@ -20,3 +20,15 @@ try {
 }
 return $db;
 }
+
+
+function isRole($role){
+    $is_role = isset($_SESSION['user']) && in_array($role, json_decode($_SESSION['user']['roles']));
+    return $is_role;
+}
+
+function cleanInput($data){
+    $data = strip_tags($data);
+    $data = htmlentities($data);
+    return $data;
+}

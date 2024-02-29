@@ -7,11 +7,11 @@
     <article>
         <div class=" card mb-3 ">
         <a href="?page=post_detail&id=<?= $article['id'] ?>"><img src="<?= $article['image'] ?>" class="card-img-top" alt="<?= $article['title'] ?>"></a>
-            <div class="card-body bg-dark">
-                <h5 class="card-title text-white"><?= $article['title'] ?></h5>
-                <p class="card-text text-white"><?= substr($article['description'], 0, 100) ?></p>
-                <p class="card-text text-white"><small>Rédigé le <?= $article['created_at'] ?> par </small><strong><?= $article['name'] ?> <?= $article['firstname'] ?></strong></p>
-                <a href="?page=gallery&id=<?= $article['id'] ?>" class="btn btn-secondary">Lire la suite</a>
+            <div class="card-body bg-lightk">
+                <h5 class="card-title text-dark"><?= $article['title'] ?></h5>
+                <p class="card-text text-dark"><?= substr($article['description'], 0, 100) ?></p>
+                <p class="card-text text-dark"><small>Rédigé le <?= substr($article['created_at'], 0, 10) ?> par </small> <img src="<?= $article['avatar'] ?>" alt="default profile image" width="32" height="32" class="rounded-circle" /> <strong><?= $article['name'] ?> <?= $article['firstname'] ?></strong></p>
+                <a href="?page=post_detail&id=<?= $article['id'] ?>" class="btn btn-secondary">Lire la suite</a>
             </div>
         </div>
     </article>

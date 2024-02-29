@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar bg-dark navbar-expand-lg fixed-top" data-bs-theme="dark">
+    <nav class="navbar bg-dark navbar-expand-lg fixed-top" data-bs-theme="light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">My APP</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

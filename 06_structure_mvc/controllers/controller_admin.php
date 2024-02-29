@@ -3,7 +3,7 @@ if (!isset($_SESSION['user'])) {
     header("Location: ?page=login");
     exit();
 }
-if (!in_array('ROLE_ADMIN', json_decode($_SESSION['user']['roles']))) {
+if (!isRole('ROLE_ADMIN')) {
     header("Location: ?page=home");
     exit();
 }

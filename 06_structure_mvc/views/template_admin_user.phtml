@@ -1,14 +1,16 @@
 <h1 class="text-center">Admin Dashboard</h1>
 <p>Il est temps d'administrer</p>
-<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin') echo "active"; ?>" aria-current="page" href="?page=admin">Post</a>
-<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin_user') echo "active"; ?>" aria-current="page" href="?page=admin_user">User</a>
+<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin') echo "active"; ?>" aria-current="page" href="?page=admin">Posts</a>
+<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin_user') echo "active"; ?>" aria-current="page" href="?page=admin_user">Contacts</a>
 <h2>Handle user</h2>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">id</th>
+      <th scope="col">Avatar</th>
       <th scope="col">Name</th>
       <th scope="col">First Name</th>
+      <th scope="col">Email</th>
       <th scope="col">adress</th>
       <th scope="col">adress 2</th>
       <th scope="col">City</th>
@@ -23,8 +25,10 @@
     <?php foreach ($contacts as $contact) : ?>
     <tr>
       <th scope="row"><?= $contact['id'] ?></th>
+      <td><img src="<?= $contact['avatar'] ?>" height="50" width="50"></td>
       <td><?= $contact['name'] ?></td>
       <td><?= $contact['firstname'] ?></td>
+      <td><?= $contact['email'] ?></td>
       <td><?= $contact['adress'] ?></td>
       <td><?= $contact['adress2'] ?></td>
       <td><?= $contact['city'] ?></td>
@@ -33,8 +37,8 @@
       <td><?= $contact['message'] ?></td>
       <td><?= $contact['created_at'] ?></td>
       <td>
-        <a class="btn btn-info">Edit</a>
-        <a class="btn btn-danger" href="javascript:confirmDeleteUser(<?= $contact['id'] ?>)">Delete</a>
+        <a class="btn btn-info" href="?page=profil_edit&id=<?= $contact['user_id'] ?>">Edit</a>
+        <a class="btn btn-danger" href="javascript:confirmDeleteUser(<?= $contact['user_id'] ?>)">Delete</a>
     </td>
     </tr>
     <?php endforeach; ?>  
