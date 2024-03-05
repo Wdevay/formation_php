@@ -25,7 +25,7 @@
                                 <div class="comment-text w-100">
                                     <div class="modal-header p-3">
                                     <h5><?= $comment['name'] ?> <?= $comment['firstname'] ?></h5>
-                                    <?php if (isRole('ROLE_ADMIN')) : ?>
+                                    <?php if (Utils::isRole('ROLE_ADMIN')) : ?>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="confirmDelete(<?= $comment['id'] ?>)"></button>
                                     <?php endif; ?>
                                     </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <?php if (isRole('ROLE_ADMIN') || (isRole('ROLE_MEMBER'))) : ?>
+    <?php if (Utils::isRole('ROLE_ADMIN') || (Utils::isRole('ROLE_MEMBER'))) : ?>
         <h3 class="text-center mt-5 mb-2"> Laisser un commentaire </h3>
         <form class="container-fluid  row g-3 " method="POST" action="?page=post_detail&id=<?= $article['id'] ?>">
             <div class="col-md-12">

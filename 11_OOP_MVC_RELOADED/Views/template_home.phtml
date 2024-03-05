@@ -1,0 +1,46 @@
+<h1 class="text-center"><?= CONFIG_SITE_TITLE ?></h1>
+<h2 class="text-center"><?= $title ?></h2>
+
+<?php if ($auth::isRole('ROLE_ADMIN')) : ?>
+    <div class="alert alert-info" role="alert">
+        <p> Bonjour <strong><?= $_SESSION['user']['name'] ?> <?= $_SESSION['user']['firstname'] ?></strong>
+        <p>Vous etes connecté en tant que <strong><a href="?page=admin">ADMIN</a></strong></p>
+    </div>
+<?php endif; ?>
+<!-- CAROUSEL DYNAMIQUE -->
+
+<div class="col-lg-10 offset-lg-1 bg-dark text-light">
+    <div id="carousel" class="carousel slide" data-ride="carousel" style="max-height:800px;">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to=" 2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" role="listbox">
+            <?php foreach ($posts as $key => $article) : ?>
+
+                <div class="carousel-item <?php if ($key === array_key_first($posts)) echo "active" ?>">
+                    <img src="<?= $article['image'] ?>" class="d-block w-100" style="max-height:800px;" alt="<?= $article['title'] ?>">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><?= $article['title'] ?></h5>
+                        <p><?= $article['description'] ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+
+<h2 class="text-center">Home</h2>
+<p><?= CONFIG_SITE_SLOGAN ?></p>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque numquam hic voluptatem consectetur! Quae aliquid quam hic ea possimus laudantium ratione ut neque quasi vero earum, laboriosam voluptate labore excepturi.</p>

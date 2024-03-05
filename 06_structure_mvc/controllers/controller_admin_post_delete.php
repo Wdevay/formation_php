@@ -3,7 +3,7 @@ if (!isset($_SESSION['user'])) {
     header("Location: ?page=login");
     exit();
 }
-if (!isRole('ROLE_ADMIN')) {
+if (!Utils::isRole('ROLE_ADMIN')) {
     header("Location: ?page=home");
     exit();
 }
@@ -12,7 +12,7 @@ if (isset($_GET['post_id'])) {
     // NB: (int) permet de forcer le type de la variable au type entier
     $id_to_delete=(int)$_GET['id'];
 
-    $db = connectDB();
+    $db = Utils::connectDB();
     if ($db) {
         $sql = $db->prepare("DELETE FROM post WHERE id = :id");
         $sql->bindParam(':id', $id_to_delete);
@@ -27,7 +27,7 @@ if (isset($_GET['com_id'])) {
     // NB: (int) permet de forcer le type de la variable au type entier
     $id_to_delete=(int)$_GET['com_id'];
 
-    $db = connectDB();
+    $db = Utils::connectDB();
     if ($db) {
         $sql = $db->prepare("SELECT post_id FROM comments WHERE id = :id");
         $sql->bindParam(':id', $id_to_delete);

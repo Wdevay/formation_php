@@ -33,7 +33,7 @@ else {
 }
 
 
-$db=connectDB();
+$db=Utils::connectDB();
 
 if ($db){
     $sql= $db->prepare("SELECT * FROM user INNER JOIN contact ON user.id = contact.user_id WHERE user.id = :id");
@@ -48,15 +48,15 @@ $errors=[];
 
 if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['email'])  && !empty($_POST['name']) && !empty($_POST['firstname']) && !empty($_POST['email'])) {
 
-    $name = cleanInput($_POST['name']);
-    $firstname = cleanInput($_POST['firstname']);
-    $email = cleanInput($_POST['email']);
-    $adress = cleanInput($_POST['adress']);
-    $adress2 = cleanInput($_POST['adress2']);
-    $city = cleanInput($_POST['city']);
-    $state = cleanInput($_POST['state']);
-    $code_postal = cleanInput($_POST['code_postal']);
-    $message = cleanInput($_POST['message']);
+    $name = Utils::cleanInput($_POST['name']);
+    $firstname = Utils::cleanInput($_POST['firstname']);
+    $email = Utils::cleanInput($_POST['email']);
+    $adress = Utils::cleanInput($_POST['adress']);
+    $adress2 = Utils::cleanInput($_POST['adress2']);
+    $city = Utils::cleanInput($_POST['city']);
+    $state = Utils::cleanInput($_POST['state']);
+    $code_postal = Utils::cleanInput($_POST['code_postal']);
+    $message = Utils::cleanInput($_POST['message']);
 
     if (isset($_FILES['avatar']) && !empty($_FILES['avatar'])) {
         $accepted= ["jpg","png","jpeg","gif","svg","webp"];

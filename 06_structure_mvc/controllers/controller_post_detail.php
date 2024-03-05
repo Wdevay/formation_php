@@ -1,7 +1,7 @@
 <?php
 
 $post_id=$_GET['id'];
-$db = connectDB();
+$db = Utils::connectDB();
 $article = [];
 
 
@@ -24,7 +24,7 @@ if ($db){
 }
 
 if (isset($_POST['comment']) && !empty($_POST['comment'])) {
-    $comment = cleanInput($_POST['comment']);
+    $comment = Utils::cleanInput($_POST['comment']);
     $user_id = $_SESSION['user']['id'];
 
     if ($db) {

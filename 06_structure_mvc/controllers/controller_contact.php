@@ -4,16 +4,16 @@ $success=false;
 if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email']) && !empty($_POST['password'])) {
 
     
-    $name = cleanInput($_POST['name']);
-    $firstname = cleanInput($_POST['firstname']);
-    $email = cleanInput($_POST['email']);
-    $password = password_hash(cleanInput($_POST['password']), PASSWORD_DEFAULT);
-    $adress = cleanInput($_POST['adress']);
-    $adress2 = cleanInput($_POST['adress2']);
-    $city = cleanInput($_POST['city']);
-    $state = cleanInput($_POST['state']);
-    $code_postal = cleanInput($_POST['code_postal']);
-    $message = cleanInput($_POST['message']);
+    $name = Utils::cleanInput($_POST['name']);
+    $firstname = Utils::cleanInput($_POST['firstname']);
+    $email = Utils::cleanInput($_POST['email']);
+    $password = password_hash(Utils::cleanInput($_POST['password']), PASSWORD_DEFAULT);
+    $adress = Utils::cleanInput($_POST['adress']);
+    $adress2 = Utils::cleanInput($_POST['adress2']);
+    $city = Utils::cleanInput($_POST['city']);
+    $state = Utils::cleanInput($_POST['state']);
+    $code_postal = Utils::cleanInput($_POST['code_postal']);
+    $message = Utils::cleanInput($_POST['message']);
 
     $errors = [];
 
@@ -46,7 +46,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
         }
     }
 
-    $db = connectDB();
+    $db = Utils::connectDB();
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Veuillez renseigner une adresse email valide svp";

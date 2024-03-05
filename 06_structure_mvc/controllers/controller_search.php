@@ -1,6 +1,6 @@
 <?php
 
-$db = connectDB();
+$db = Utils::connectDB();
 $posts = [];
 $keywords=strip_tags(urldecode(trim($_GET['keywords'])));
 

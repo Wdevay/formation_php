@@ -1,0 +1,80 @@
+<h1 class="text-center"><?= $title ?></h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, ratione unde deleniti expedita corrupti, quasi ab placeat nobis assumenda asperiores facere error mollitia vero cupiditate quibusdam! Eum velit natus molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam cupiditate nesciunt dolores provident illo voluptate asperiores deleniti ullam. Consequatur, sapiente quas. Facilis eum dolorem aperiam aliquid dignissimos maxime expedita dolore.</p>
+<section id="formulaire">
+    <?php if (isset($errors) && ($errors)) : ?>
+        <?php foreach ($errors as $error) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $error ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    <?php if (isset($success) && !($success)) : ?>
+        <form class="row g-3" action="?page=contact" method="POST">
+            <div class="col-md-6">
+                <label for="inputName" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="inputName" name="name" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputFirstName" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="inputFirstName" name="firstname" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" name="email" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Mot de Passe</label>
+                <input type="password" class="form-control" id="inputPassword4" name="password" required>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Rue jean valjean" name="adress">
+            </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label">Adresse (Suite)</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="N° Appartement, Etage" name="adress2">
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Ville</label>
+                <input type="text" class="form-control" id="inputCity" name="city">
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Région</label>
+                <select id="inputState" class="form-select" name="state">
+                    <option selected>Choisissez...</option>
+                    <?php foreach ($state as $value) : ?>
+                        <option><?= $value ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Code Postal</label>
+                <input type="text" class="form-control" id="inputZip" name="code_postal">
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="message" name="message" style="height: 150px"></textarea>
+                <label for="message">Votre Message</label>
+            </div>
+            <div>
+                <label for="avatar">Votre image de profil</label><br>
+                <input  class="mt-3 mb-3 form-control" type="file" multiple name="avatar" id="avatar" accept=".jpg,.jpeg,.gif,.png" required>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="accepted" name="accepted" required>
+                    <label class="form-check-label" for="gridCheck">
+                        J'accepte les termes d'utilisations (et par conséquent que mes données soient vendues)
+                    </label>
+                </div>
+            </div>
+            <div class="col-12 mb-5">
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </div>
+        <?php elseif (isset($success) && ($success)) : ?>
+            <div class="alert alert-success" role="alert">
+                <p>Le compte <?= $email ?> a bien été crée.</p>
+                <p>Vous pouvez vous <a href="?page=login">connecter</a> à votre compte.</p>
+            </div>
+        <?php endif; ?>
+        </form>
+</section>

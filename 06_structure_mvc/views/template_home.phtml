@@ -1,6 +1,6 @@
 <h1 class="text-center"><?= CONFIG_SITE_TITLE ?></h1>
 
-<?php if (isRole('ROLE_ADMIN')) : ?>
+<?php if (Utils::isRole('ROLE_ADMIN')) : ?>
     <div class="alert alert-info" role="alert">
         <p> Bonjour <strong><?= $_SESSION['user']['name'] ?> <?= $_SESSION['user']['firstname'] ?></strong>
         <p>Vous etes connecté en tant que <strong><a href="?page=admin">ADMIN</a></strong></p>

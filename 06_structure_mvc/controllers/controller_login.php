@@ -8,9 +8,9 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
 
     $errors = [];
 
-    $db = connectDB();
-    $email = cleanInput($_POST['email']);
-    $password = cleanInput($_POST['password']);
+    $db = Utils::connectDB();
+    $email = Utils::cleanInput($_POST['email']);
+    $password = Utils::cleanInput($_POST['password']);
 
     if ($db) {
 
@@ -36,7 +36,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
         unset($account["password"]);
         $_SESSION['user'] = $account;   
     }
-    if (isRole('ROLE_ADMIN')) {
+    if (Utils::isRole('ROLE_ADMIN')) {
         header("Location: ?page=admin");
         exit();
     }

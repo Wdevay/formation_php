@@ -3,12 +3,12 @@ if (!isset($_SESSION['user'])) {
     header("Location: ?page=login");
     exit();
 }
-if (!isRole('ROLE_ADMIN')) {
+if (!Utils::isRole('ROLE_ADMIN')) {
     header("Location: ?page=home");
     exit();
 }
 
-$db = connectDB();
+$db = Utils::connectDB();
 $posts = [];
 
 if ($db){

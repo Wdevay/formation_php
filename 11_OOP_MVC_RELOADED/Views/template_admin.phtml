@@ -1,0 +1,44 @@
+<h1 class="text-center">Admin Dashboard</h1>
+<p>Il est temps d'administrer</p>
+<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin') echo "active"; ?>" aria-current="page" href="?page=admin">Posts</a>
+<a class="btn btn-primary <?php if(isset($_GET['page']) && $_GET['page']==='admin_user') echo "active"; ?>" aria-current="page" href="?page=admin_user">Contacts</a>
+
+<h2>Handle post</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Author</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($posts as $post) : ?>
+    <tr>
+      <th scope="row"><?= $post['id'] ?></th> <!-- ID -->
+      <td><img src="<?= $post['image'] ?>" alt="image" height="50" width="50"></td> <!-- IMAGE -->
+      <td><?= $post['title'] ?></td> <!-- TITLE -->
+      <td><?= substr($post['description'], 0, 150) ?></td> <!-- DESCRIPTION -->
+      <td><?= $post['name']." ".$post['firstname'] ?></td> <!-- AUTHOR -->
+      <td><?= $post['created_at'] ?></td> <!-- CREATED AT -->
+      <td> <!-- ACTIONS -->
+        <a class="btn btn-info" href="?page=adminpost&id=<?= $post['id'] ?>">Edit</a>
+        <a class="btn btn-danger" onclick="confirmDelete(<?= $post['id'] ?>)">Delete</a>
+    </td>
+    </tr>
+    <?php endforeach; ?>  
+  </tbody>
+</table>
+<a class="btn btn-success mb-3" href="?page=adminpost&action=create">Add new post</a>
+<script>
+  function confirmDelete(id) {
+    const question = window.confirm("Are you sure you want to delete this post ?");
+    if (question) {
+      window.location.href = `?page=adminpost&action=delete&post_id=${id}`
+    }
+  }
+</script>
